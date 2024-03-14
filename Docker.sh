@@ -1,13 +1,9 @@
-Docker install steps:
 #!/bin/bash
 #Step 1(To remove the docker if exist)
 apt-get purge docker-ce docker-ce-cli containerd.io -y
 apt-get autoremove -y
-sleep 10
+sleep 5
 
-
-##!/bin/bash
-# Update package index
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
