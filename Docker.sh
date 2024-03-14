@@ -2,37 +2,19 @@ Docker install steps:
 #!/bin/bash
 #Step 1(To remove the docker if exist)
 apt-get purge docker-ce docker-ce-cli containerd.io -y
-apt-get autoremove -y
+#apt-get autoremove -y
 sleep 10
 
-#Step 2( Apt update)
-apt-get update -y
 
-#Step 3(To install necessary pacakges)
-apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+##!/bin/bash
+# Update package index
+sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install -y docker-ce
+sudo chmod 777 /var/run/docker.sock
 
-#Step 4( Download the package)
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-
-#Step 5 (adding package)
-
-cat <<EOF >/etc/apt/sources.list.d/docker.list
-deb https://download.docker.com/linux/$(lsb_release -si | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable
-EOF
-
-#Step 6 (Install docker)
-sleep 10
-
-apt-get update -y
-apt-get install -y docker-ce docker-ce-cli containerd.io
-sleep 30
-
-#step 7
-cat <<EOF > /etc/docker/daemon.json
-{
-  "exec-opts": ["native.cgroupdriver=systemd"]
-}
-EOF
-sleep 20
-#step 8
-systemctl daemon-reload && systemctl restart docker
+echo "DDOCKER INSTALLED SUCCESSFULLY"
