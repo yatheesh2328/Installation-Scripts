@@ -2,7 +2,7 @@ Docker install steps:
 #!/bin/bash
 #Step 1(To remove the docker if exist)
 apt-get purge docker-ce docker-ce-cli containerd.io -y
-#apt-get autoremove -y
+apt-get autoremove -y
 sleep 10
 
 
@@ -18,3 +18,5 @@ sudo apt install -y docker-ce
 sudo chmod 777 /var/run/docker.sock
 
 echo "DDOCKER INSTALLED SUCCESSFULLY"
+
+#use sudo ./docker.sh 
