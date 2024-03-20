@@ -13,6 +13,9 @@ apt-cache policy docker-ce
 sudo apt install -y docker-ce
 sudo chmod 777 /var/run/docker.sock
 
+sudo usermod -aG docker $USER
+sudo newgrp docker
+
 echo "DDOCKER INSTALLED SUCCESSFULLY"
 
 #use sudo ./docker.sh 
