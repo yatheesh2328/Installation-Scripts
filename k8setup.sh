@@ -1,4 +1,5 @@
 #Step1 : Install Containers(Run on both Master and Worker Nodes)
+# switch to root user
 
 sudo apt update
 sudo swapoff -a
